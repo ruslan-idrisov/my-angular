@@ -1,0 +1,54 @@
+.content {
+  height: 80vh;
+  width: 35vw;
+  min-width: 250px;
+  border: 2px solid;
+  margin: auto;
+  padding: 40px;
+  margin: 10px;
+
+  h1 {
+    font-family: Robotic, sans-serif;
+    font-size: 25px;
+  }
+
+  > p {
+    font-size: 22px
+  }
+
+  .todo-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-Y: auto;
+    height: 350px;
+    border: 1px solid;
+    margin: 5px;
+
+    .todo {
+      border-bottom: 1px solid;
+      border-top: 1px solid transparent;
+    }
+    .todo:last-child {
+      margin-bottom: -101px;
+    }
+
+    p {
+      padding: 5px;
+      margin: 0;
+      font-size: 10px;
+      font-family: Robotic, sans-serif;
+
+      b {
+        font-size: 16px;
+      }
+    }
+
+    .loader {
+      display: flex;
+      margin: auto;
+      font-size: 30px;
+      font-weight: bolder;
+    }
+  }
+
+}

@@ -1,0 +1,20 @@
+<div class="content">
+  <h1>Input Component</h1>
+  <div>
+    <input type="range" [(ngModel)]="rangeValue" (ngModelChange)="updateChanges()">
+  </div>
+  
+  <div>
+    <input type="text" id="inputValue" [(ngModel)]="titleValue">
+    <label for="inputOne">Title</label>
+  </div>
+  <div>
+    <input type="text" id="inputTwo" [(ngModel)]="messageValue">
+    <label for="inputTwo">Message</label>
+  </div>
+  <div>
+    <button (click)="onClickButton()">Добавить</button>
+    <button (click)="onClickServerButton()">Добавить с сервера {{rangeValue}} из списка</button>
+  </div>
+  <!-- <button (click)="onClickReleaseButton()">Release</button> -->
+</div>

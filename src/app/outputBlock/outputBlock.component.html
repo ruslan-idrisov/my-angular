@@ -1,0 +1,17 @@
+<div class="content">
+  <h1>Output Component</h1>
+  <p>Range: <b>{{ range$| async }}</b></p>
+
+  <div #todoWrapper class="todo-wrapper">
+    <ng-container *ngIf="!(loading$ | async); else loader">
+      <div *ngFor="let text of textReversed$ | async" class="todo">
+        <p>Title: <b>{{ text.title }}</b></p>
+        <p>Message: <b>{{ text.body }}</b></p>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loader>
+  <p class="loader">Loading...</p>
+</ng-template>

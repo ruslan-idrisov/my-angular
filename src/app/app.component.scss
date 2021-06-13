@@ -1,0 +1,18 @@
+.app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  animation: dance 5s leniar infinity;
+}
+
+
+@keyframes dance {
+  0% {
+      border-radius: 50%;
+  }
+  100% {
+    border-radius: 0;
+  }
+}
