@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <app-pong-game *ngIf="fieldSizes$ | async as fieldSizes"
+    [fieldWidth]="fieldSizes.width"
+    [fieldHeight]="fieldSizes.height"
+    [currentPos]="currentPos"
+    [ballSize]="ballSize"
+  ></app-pong-game>
+</div>

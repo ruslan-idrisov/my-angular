@@ -1,0 +1,30 @@
+.field {
+  position: relative;
+  width: 80vw;
+  height: 80vh;
+  overflow: hidden;
+  border: 4px dashed grey;
+  box-sizing: content-box;
+
+  &__ball {
+    position: absolute;
+    background: silver;
+    border-radius: 50%;
+  }
+  &__wall-left, &__wall-right {
+    position: absolute;
+    background: silver;
+    width: 10px;
+    height: 200px;
+  }
+  &__wall-left {
+    left: 0;
+  }
+  &__wall-right {
+    right: 0;
+  }
+}
+
+b {
+  font-size: 105px;
+}

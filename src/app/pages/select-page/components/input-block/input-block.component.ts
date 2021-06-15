@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { addActionRange, addActionText, getData } from '../store/test.actions';
-import { AppWithState, selectFeature, selectStoreRange, selectStoreText, selectStoreTextReversed } from '../store/test.selectors';
+// import { addActionRange, addActionText, getData } from 'src/app/store/test.actions';
+// import { AppWithState, selectFeature, selectStoreRange, selectStoreText, selectStoreTextReversed } from '../../../../store/test.selectors';
+import { addActionRange, addActionText, getData } from '../../store/test.actions';
+import { AppWithState, selectFeature, selectStoreRange, selectStoreText, selectStoreTextReversed } from '../../store/test.selectors';
 
 @Component({
   selector: 'app-input-block',
-  templateUrl: './inputBlock.component.html',
-  styleUrls: ['./inputBlock.component.scss'],
+  templateUrl: './input-block.component.html',
+  styleUrls: ['./input-block.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputBlockComponent implements OnInit {

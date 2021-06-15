@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
-import { TestService } from "../service";
 import { catchError, map, mergeMap, withLatestFrom } from "rxjs/operators";
 import { getData, getDataFail, getDataSuccess } from "./test.actions";
 import { AppWithState, selectStoreRange } from "./test.selectors";
 import { select, Store } from "@ngrx/store";
+import { TestService } from "../shared/service";
+
 
 @Injectable()
 export class TestEffects {
