@@ -1,7 +1,13 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { addBallPositions, addFieldSizes, reverseBallXSpeed, reverseBallYSpeed } from "./pong.actions";
+import { addBallPositions, addFieldSizes, addGoalBlue, addGoalRed, addWallBotPos, addWallsWidth, addWallTopPos, clearGoals, offGoalOut, pauseOff, pauseOn, restartGame, reverseBallXSpeed, reverseBallYSpeed } from "./pong.actions";
 // import { addActionRange, addActionText, getData, getDataFail, getDataSuccess } from "./test.actions";
 
+export interface Game {
+  pause: boolean;
+  blueGoals: number;
+  redGoals: number;
+  goalOut: boolean;
+}
 
 export interface Field {
   width: number,
@@ -17,45 +23,44 @@ export interface Ball {
 }
 
 export interface Walls {
-  wallLeft: Wall;
-  wallRight: Wall;
-}
-
-export interface Wall {
-  height: number;
   width: number;
-  top: number;
+  height: number;
+  speed: number;
+  wallBotPos: number;
+  wallTopPos: number;
 }
 
 export interface PongState {
+  game: Game;
   field: Field;
   ball: Ball;
   walls: Walls;
 }
 
 const initialState: PongState = {
+  game: {
+    pause: false,
+    blueGoals: 0,
+    redGoals: 0,
+    goalOut: false
+  },
   field: {
     width: 0,
     height: 0
   },
   ball: {
-    ballSize: 35,
-    ballPos_X: 0,
+    ballSize: 30,
+    ballPos_X: 200,
     ballPos_Y: 0,
-    ballSpeed_X: .3,
-    ballSpeed_Y: .2,
+    ballSpeed_X: 2,
+    ballSpeed_Y: 2,
   },
   walls: {
-    wallLeft: {
-      height: 0,
-      width: 0,
-      top: 0,
-    },
-    wallRight: {
-      height: 0,
-      width: 0,
-      top: 0,
-    }
+    width: 0,
+    height: 0,
+    speed: 3,
+    wallBotPos: 0,
+    wallTopPos: 0
   }
 }
 
@@ -83,17 +88,91 @@ const pongReducer = createReducer(
       ballSpeed_Y: -state.ball.ballSpeed_Y
     }
   })),
-  // on(getDataSuccess, (state, { data }) => ({
-  //   ...state,
-  //     text: [...state.text, ...data],
-  //     loading: false
-  // })),
-  // on(getDataFail, state => ({
-  //   ...state,
-  //   loading: false
-  // })),
+  on(addWallsWidth, (state, { width }) => ({
+    ...state,
+    walls: {
+      ...state.walls, 
+      width
+    }
+  })),
+  on(addWallTopPos, (state, { wallTopPos }) => ({
+    ...state,
+    walls: {
+      ...state.walls, 
+      wallBotPos: wallTopPos,
+      wallTopPos: wallTopPos,
+    }
+  })),
+  on(addWallBotPos, (state, { wallBotPos }) => ({
+    ...state,
+    walls: {
+      ...state.walls, 
+      wallBotPos
+    }
+  })),
+  on(addGoalBlue, state => ({
+    ...state,
+    game: {
+      ...state.game,
+      blueGoals: state.game.blueGoals + 1,
+      goalOut: true
+    }
+  })),
+  on(addGoalRed, state => ({
+    ...state,
+    game: {
+      ...state.game,
+      redGoals: state.game.redGoals + 1,
+      goalOut: true
+    }
+  })),
+  on(offGoalOut, state => ({
+    ...state,
+    game: {
+      ...state.game,
+      goalOut: false
+    }
+  })),
+  on(clearGoals, state => ({
+    ...state,
+    game: {
+      ...state.game,
+      redGoals: 0,
+      blueGoals: 0
+    }
+  })),
+  on(pauseOn, state => ({
+    ...state,
+    game: {
+      ...state.game,
+      pause: true
+    }
+  })),
+  on(pauseOff, state => ({
+    ...state,
+    game: {
+      ...state.game,
+      pause: false,
+      goalOut: false
+    }
+  })),
+  on(restartGame, state => ({
+    ...state,
+    game: {
+      ...state.game,
+      blueGoals: 0,
+      redGoals: 0,
+    }, 
+    ball: {
+      ...state.ball,
+      ballPos_X: 200,
+      ballPos_Y: 0,
+      ballSpeed_X: 4,
+      ballSpeed_Y: 4,
+    }
+  })),
 );
-
+ 
 export function reducer(state: PongState | undefined, action: Action) {
   return pongReducer(state, action);
 }

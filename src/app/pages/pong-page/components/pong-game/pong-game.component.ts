@@ -12,6 +12,10 @@ export class PongGameComponent implements OnInit {
   @Input() ballPosX: number = 0;
   @Input() ballPosY: number = 0;
   @Input() currentPos: string = '';
+  @Input() wallWidth: number = 0;
+  @Input() wallBotPos: number = 0;
+  @Input() wallTopPos: number = 0;
+
 
   constructor() { }
 

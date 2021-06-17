@@ -29,6 +29,16 @@ export const selectBall = createSelector(
   state => state.ball
 );
 
+export const selectGame = createSelector(
+  selectFeature,
+  state => state.game
+);
+
+export const selectPause = createSelector(
+  selectGame,
+  state => state.pause
+);
+
 // export const selectStoreTextReversed = createSelector(
 //   selectStoreText,
 //   state => [...state].reverse()
