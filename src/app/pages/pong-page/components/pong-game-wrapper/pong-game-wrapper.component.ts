@@ -70,8 +70,6 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
         this.wallBotPos = x.wallBotPos;
       }),
       this.game$.subscribe(x => {
-        console.log(x, 'game$')
-
         this.pause = x.pause;
         this.blueGoals = x.blueGoals;
         this.redGoals = x.redGoals;
@@ -92,8 +90,6 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
   changePosition(): void {
     this.ballPosX += this.ballSpeedX;
     this.ballPosY += this.ballSpeedY;
-
-      console.log(!this.goalOut, 'goalOut')
     if (!this.goalOut) {
       this.collisionСhecks();
     }

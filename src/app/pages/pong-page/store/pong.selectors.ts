@@ -38,18 +38,3 @@ export const selectPause = createSelector(
   selectGame,
   state => state.pause
 );
-
-// export const selectStoreTextReversed = createSelector(
-//   selectStoreText,
-//   state => [...state].reverse()
-// );
-
-// export const selectStoreMessage = createSelector(
-//   selectStoreText,
-//   (state: State[], props: number) => state[props]
-// );
-
-// export const selectStoreRange = createSelector(
-//   selectFeature,
-//   state => state.range
-// );

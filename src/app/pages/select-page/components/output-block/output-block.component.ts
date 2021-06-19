@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AppWithState, selectStoreRange, selectStoreTextReversed, selectStoreLoading } from '../../store/test.selectors';
+import { AppWithState, selectStoreRange, selectStoreTextReversed, selectStoreLoading, selectStoreText } from '../../store/test.selectors';
 
 @Component({
   selector: 'app-output-block',
@@ -16,6 +16,5 @@ export class OutputBlockComponent implements OnInit {
   constructor(private store$: Store<AppWithState>) {}
 
   ngOnInit(): void {
-    this.textReversed$.subscribe((value) => console.log(value, 'textReversed$'));
   }
 }

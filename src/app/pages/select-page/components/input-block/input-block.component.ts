@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-// import { addActionRange, addActionText, getData } from 'src/app/store/test.actions';
-// import { AppWithState, selectFeature, selectStoreRange, selectStoreText, selectStoreTextReversed } from '../../../../store/test.selectors';
 import { addActionRange, addActionText, getData } from '../../store/test.actions';
-import { AppWithState, selectFeature, selectStoreRange, selectStoreText, selectStoreTextReversed } from '../../store/test.selectors';
+import { AppWithState, selectFeature, selectStoreRange } from '../../store/test.selectors';
 
 @Component({
   selector: 'app-input-block',
@@ -43,8 +41,6 @@ export class InputBlockComponent implements OnInit {
   }
 
   onClickReleaseButton() {
-    console.log('released');
-    
     selectFeature.release()
   }
 

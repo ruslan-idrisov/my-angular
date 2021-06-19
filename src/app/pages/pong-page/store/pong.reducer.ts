@@ -167,8 +167,8 @@ const pongReducer = createReducer(
       ...state.ball,
       ballPos_X: 200,
       ballPos_Y: 0,
-      ballSpeed_X: 4,
-      ballSpeed_Y: 4,
+      ballSpeed_X: initialState.ball.ballSpeed_X,
+      ballSpeed_Y: initialState.ball.ballSpeed_Y,
     }
   })),
 );

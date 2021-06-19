@@ -20,6 +20,9 @@ import { TestEffects } from './pages/select-page/store/test.effects';
 import { SelectPageModule } from './pages/select-page/select-page.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { PongPageModule } from './pages/pong-page/pong-page.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { JumperPageModule } from './pages/jumper-page/jumper-page.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { PongPageModule } from './pages/pong-page/pong-page.module';
   ],
   imports: [
     PongPageModule,
+    JumperPageModule,
     SelectPageModule,
     HttpClientModule,
     BrowserModule,
@@ -36,6 +40,11 @@ import { PongPageModule } from './pages/pong-page/pong-page.module';
     RouterModule,
     StoreModule.forRoot({test: fromTestReducer.reducer}),
     EffectsModule.forRoot([TestEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+       // Pauses recording actions and state changes when the extension window is not open
+    }),
   ],
   providers: [TestService],
   bootstrap: [AppComponent]
